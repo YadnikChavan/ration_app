@@ -1,18 +1,17 @@
 import React from "react";
 import {
-  Box,
-  Button,
-  Heading,
-  Input,
-  Pressable,
   Text,
-  View,
+  Box,
+  Heading,
   VStack,
+  Input,
+  Button,
+  Pressable,
 } from "native-base";
+import { MaterialIcons, Ionicons, FontAwesome } from "@expo/vector-icons";
 import Colors from "../Colors";
-import { MaterialIcons, Ionicons } from "@expo/vector-icons";
 
-function LoginScreen({ navigation }) {
+function RegisterScreen({ navigation }) {
   return (
     <Box flex={1} bg={Colors.white}>
       <Box
@@ -24,8 +23,20 @@ function LoginScreen({ navigation }) {
         ś
         justifyContent={"center"}
       >
-        <Heading>LOGIN</Heading>
+        <Heading>SIGN UP</Heading>
         <VStack space={8} pt="6">
+          <Input
+            InputLeftElement={
+              <FontAwesome name="user" size={20} color={Colors.main} />
+            }
+            variant="underlined"
+            placeholder="Username"
+            w={"70%"}
+            pl={2}
+            color={Colors.main}
+            borderBottomColor={Colors.underline}
+          />
+
           <Input
             InputLeftElement={
               <MaterialIcons name="email" size={20} color={Colors.main} />
@@ -62,15 +73,15 @@ function LoginScreen({ navigation }) {
           bg={Colors.main}
           onPress={() => navigation.navigate("Bottom")}
         >
-          LOGIN
+          SIGN UP
         </Button>
 
-        <Pressable mt={4} onPress={() => navigation.navigate("Register")}>
-          <Text color={Colors.deepestGray}>SIGN UP</Text>
+        <Pressable mt={4} onPress={() => navigation.navigate("Login")}>
+          <Text color={Colors.deepestGray}>LOGIN</Text>
         </Pressable>
       </Box>
     </Box>
   );
 }
 
-export default LoginScreen;
+export default RegisterScreen;
