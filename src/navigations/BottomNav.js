@@ -61,7 +61,7 @@ const BottomNav = () => {
         component={CartScreen}
         options={{
           tabBarButton: (props) => <CustomTab {...props} />,
-          tabBarIcon: ({ focused, color, size }) => (
+          tabBarIcon: ({ focused }) => (
             <Center>
               {focused ? (
                 <FontAwesome5

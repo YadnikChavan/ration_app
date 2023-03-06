@@ -8,6 +8,7 @@ import {
   Button,
   Pressable,
 } from "native-base";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MaterialIcons, Ionicons, FontAwesome } from "@expo/vector-icons";
 import Colors from "../Colors";
 
@@ -71,12 +72,29 @@ function RegisterScreen({ navigation }) {
           w="40%"
           rounded={50}
           bg={Colors.main}
-          onPress={() => navigation.navigate("Bottom")}
+          onPress={async () => {
+            try {
+              await AsyncStorage.setItem(
+                "loginData",
+                JSON.stringify({ isLoggedIn: true })
+              );
+              console.debug("DATASTORED");
+              navigation.navigate("Bottom");
+            } catch (error) {
+              // Error
+              console.log(error);
+            }
+          }}
         >
           SIGN UP
         </Button>
 
-        <Pressable mt={4} onPress={() => navigation.navigate("Login")}>
+        <Pressable
+          mt={4}
+          onPress={() => {
+            navigation.navigate("Login");
+          }}
+        >
           <Text color={Colors.deepestGray}>LOGIN</Text>
         </Pressable>
       </Box>

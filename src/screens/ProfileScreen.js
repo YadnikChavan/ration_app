@@ -8,9 +8,7 @@ function ProfileScreen() {
     <>
       <Center bg={Colors.main} pt={10} pb={6}>
         <Image
-          source={{
-            uri: "https://toppng.com/uploads/preview/file-svg-profile-icon-vector-11562942678pprjdh47a8.png",
-          }}
+          source={require("../../assets/images/profile-icon-png-899.png")}
           alt="profile"
           w={24}
           h={24}

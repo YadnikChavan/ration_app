@@ -21,9 +21,11 @@ const Swiper = () => (
     previewopenValue={-40}
     previewopenDelay={3000}
     data={products}
+    keyExtractor={(item) => item.id}
     renderItem={renderitem}
     renderHiddenItem={hiddenitems}
     showsVerticalScrollIndicator={false}
+    onRowDidOpen={(i) => console.debug(i)}
   />
 );
 
