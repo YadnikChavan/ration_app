@@ -6,22 +6,18 @@ import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import PlaceOrderModel from "../components/PlaceOrderModel";
 import OrderItem from "../components/OrderItem";
 
-function PlaceOrderScreen() {
+function PlaceOrderScreen({ route }) {
+  const data = route.params;
+
   return (
     <Box bg={Colors.subGreen} flex={1} safeAreaTop pt={6}>
       <Box>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <OrderInfo
             title={"CUSTOMER"}
-            subTitle="Admin"
-            text={"admin@e.com"}
-            icon={
-              <FontAwesome5
-                name="shipping-fast"
-                size={30}
-                color={Colors.white}
-              />
-            }
+            subTitle={data.login.username}
+            text={data.login.email}
+            icon={<FontAwesome5 name="user" size={30} color={Colors.white} />}
           />
           <OrderInfo
             title={"DELIVER TO"}
@@ -40,7 +36,7 @@ function PlaceOrderScreen() {
           PRODUCTS
         </Heading>
         <OrderItem />
-        <PlaceOrderModel />
+        <PlaceOrderModel data={data} />
       </Box>
     </Box>
   );

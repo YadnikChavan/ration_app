@@ -9,17 +9,34 @@ import PlaceOrderScreen from "../screens/PlaceOrderScreen";
 
 const Stack = createNativeStackNavigator();
 
-const StackNav = () => {
+const StackNav = ({ route }) => {
+  const data = route.params;
   return (
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Single" component={SingleProductScreen} />
-      <Stack.Screen name="Shipping" component={ShippingScreen} />
-      <Stack.Screen name="Checkout" component={PaymentScreen} />
-      <Stack.Screen name="PlaceOrder" component={PlaceOrderScreen} />
+      <Stack.Screen name="Home" initialParams={data} component={HomeScreen} />
+      <Stack.Screen
+        name="Single"
+        initialParams={data}
+        component={SingleProductScreen}
+      />
+      <Stack.Screen
+        name="Shipping"
+        initialParams={data}
+        component={ShippingScreen}
+      />
+      <Stack.Screen
+        name="Checkout"
+        initialParams={data}
+        component={PaymentScreen}
+      />
+      <Stack.Screen
+        name="PlaceOrder"
+        initialParams={data}
+        component={PlaceOrderScreen}
+      />
     </Stack.Navigator>
   );
 };

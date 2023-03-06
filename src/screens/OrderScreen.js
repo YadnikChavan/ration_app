@@ -3,7 +3,6 @@ import { Box, Heading, ScrollView, Text, View } from "native-base";
 import Colors from "../Colors";
 import OrderInfo from "../components/OrderInfo";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
-import PlaceOrderModel from "../components/PlaceOrderModel";
 import OrderItem from "../components/OrderItem";
 import OrderModel from "../components/OrderModel";
 

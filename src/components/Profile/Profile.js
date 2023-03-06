@@ -1,28 +1,45 @@
+import { useNavigation } from "@react-navigation/native";
 import { Box, FormControl, Input, ScrollView, Text, VStack } from "native-base";
-import React from "react";
+import React, { useState } from "react";
+import { Alert } from "react-native";
 import Colors from "../../Colors";
 import Buttone from "../Buttone";
 
-const Inputs = [
-  {
-    label: "USERNAME",
-    type: "text",
-  },
-  {
-    label: "EMAIL",
-    type: "text",
-  },
-  {
-    label: "NEW PASSWORD",
-    type: "password",
-  },
-  {
-    label: "CONFIRM PASSWORD",
-    type: "password",
-  },
-];
+export default function Profile({ data }) {
+  const navigation = useNavigation();
 
-export default function Profile() {
+  const [username, setUsername] = useState(data.login.username);
+  const [email, setEmail] = useState(data.login.email);
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+
+  const Inputs = [
+    {
+      label: "USERNAME",
+      type: "text",
+      value: username,
+      onChange: (e) => setUsername(e),
+    },
+    {
+      label: "EMAIL",
+      type: "text",
+      value: email,
+      onChange: (e) => setEmail(e),
+    },
+    {
+      label: "NEW PASSWORD",
+      type: "password",
+      value: password,
+      onChange: (e) => setPassword(e),
+    },
+    {
+      label: "CONFIRM PASSWORD",
+      type: "password",
+      value: confirm,
+      onChange: (e) => setConfirm(e),
+    },
+  ];
+
   return (
     <Box h="full" bg={Colors.white} px={5}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -51,10 +68,34 @@ export default function Profile() {
                   borderColor: Colors.main,
                   borderWidth: 1,
                 }}
+                value={i.value}
+                onChangeText={i.onChange}
               />
             </FormControl>
           ))}
-          <Buttone bg={Colors.main} color={Colors.white}>
+          <Buttone
+            onPress={(e) => {
+              if (password == "" || password != confirm) {
+                Alert.alert(
+                  "Invalid Credentials",
+                  "Your Email or Password has not matched"
+                );
+              } else {
+                data.login.username = username;
+                data.login.email = email;
+                data.login.password = password;
+                setPassword("");
+                setConfirm("");
+                navigation.navigate("Profile", data);
+                Alert.alert(
+                  "Updated Successfully",
+                  "Details has been updated successfully"
+                );
+              }
+            }}
+            bg={Colors.main}
+            color={Colors.white}
+          >
             UPDATE PROFILE
           </Buttone>
         </VStack>

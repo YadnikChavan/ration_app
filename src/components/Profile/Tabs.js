@@ -6,7 +6,7 @@ import Colors from "../../Colors";
 import Orders from "./Orders";
 import Profile from "./Profile";
 
-export default function Tabs() {
+export default function Tabs({ data }) {
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
   const [routes] = useState([
@@ -15,7 +15,7 @@ export default function Tabs() {
   ]);
 
   const renderScene = SceneMap({
-    first: Profile,
+    first: () => <Profile data={data} />,
     second: Orders,
   });
 

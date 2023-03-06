@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   Box,
@@ -11,8 +11,16 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MaterialIcons, Ionicons, FontAwesome } from "@expo/vector-icons";
 import Colors from "../Colors";
+import { useNavigation } from "@react-navigation/native";
+import { Alert } from "react-native";
 
-function RegisterScreen({ navigation }) {
+function RegisterScreen({ route }) {
+  const navigation = useNavigation();
+  const data = route.params;
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
   return (
     <Box flex={1} bg={Colors.white}>
       <Box
@@ -21,7 +29,6 @@ function RegisterScreen({ navigation }) {
         position={"absolute"}
         top="0"
         px={"6"}
-        ś
         justifyContent={"center"}
       >
         <Heading>SIGN UP</Heading>
@@ -36,6 +43,8 @@ function RegisterScreen({ navigation }) {
             pl={2}
             color={Colors.main}
             borderBottomColor={Colors.underline}
+            value={username}
+            onChangeText={(e) => setUsername(e)}
           />
 
           <Input
@@ -48,6 +57,8 @@ function RegisterScreen({ navigation }) {
             pl={2}
             color={Colors.main}
             borderBottomColor={Colors.underline}
+            value={email}
+            onChangeText={(e) => setEmail(e)}
           />
 
           <Input
@@ -61,6 +72,8 @@ function RegisterScreen({ navigation }) {
             pl={2}
             color={Colors.main}
             borderBottomColor={Colors.underline}
+            value={password}
+            onChangeText={(e) => setPassword(e)}
           />
         </VStack>
 
@@ -72,17 +85,15 @@ function RegisterScreen({ navigation }) {
           w="40%"
           rounded={50}
           bg={Colors.main}
-          onPress={async () => {
-            try {
-              await AsyncStorage.setItem(
-                "loginData",
-                JSON.stringify({ isLoggedIn: true })
-              );
-              console.debug("DATASTORED");
-              navigation.navigate("Bottom");
-            } catch (error) {
-              // Error
-              console.log(error);
+          onPress={() => {
+            if (username == "" || email == "" || password == "") {
+              Alert.alert("Missing Credentials", "Enter all credentails");
+            } else {
+              data.login.username = username;
+              data.login.email = email;
+              data.login.password = password;
+              console.log(JSON.stringify(data));
+              navigation.navigate("Bottom", data);
             }
           }}
         >

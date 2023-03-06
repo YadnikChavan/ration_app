@@ -14,25 +14,25 @@ import Rating from "./Rating";
 import Message from "./Notifications/Message";
 import Buttone from "./Buttone";
 
-export default function Review() {
+export default function Review({ data }) {
   const [ratings, setRatings] = useState("");
   return (
     <Box my={9}>
       <Heading bold fontSize={15} mb={2}>
         REVIEW
       </Heading>
-
+      {/* 
       <Message
         color={Colors.main}
         bg={Colors.subGreen}
         size={10}
         bold
         children={"NO REVIEW"}
-      />
+      /> */}
 
       <Box p={3} bg={Colors.subGreen} mt={5} rounded={5}>
         <Heading fontSize={15} color={Colors.black}>
-          User Doe
+          {data.login.username}
         </Heading>
         <Rating value={4} />
         <Text fontSize={12} my={3}>
@@ -42,9 +42,7 @@ export default function Review() {
           color={Colors.black}
           bg={Colors.white}
           size={10}
-          children={
-            "Cillum eu sint exercitation duis amet ut nulla do aute eiusmod."
-          }
+          children={"Really Nice"}
         />
       </Box>
       <Box mt={6}>
@@ -102,11 +100,11 @@ export default function Review() {
           <Buttone bg={Colors.main} color={Colors.white}>
             SUBMIT
           </Buttone>
-          <Message
+          {/* <Message
             color={Colors.white}
             bg={Colors.black}
             children={"Please 'Login' to write a review"}
-          />
+          /> */}
         </VStack>
       </Box>
     </Box>

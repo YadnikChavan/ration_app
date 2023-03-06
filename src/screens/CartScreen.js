@@ -6,8 +6,10 @@ import Buttone from "../components/Buttone";
 import CartEmpty from "../components/CartEmpty";
 import CartItems from "../components/CartItems";
 
-function CartScreen() {
+function CartScreen({ route }) {
   const navigation = useNavigation();
+  const data = route.params;
+  console.log("CART :::" + JSON.stringify(data));
   return (
     <Box flex={1} safeAreaTop bg={Colors.subGreen}>
       <Center w={"full"} py={5}>

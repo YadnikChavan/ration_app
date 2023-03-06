@@ -15,7 +15,7 @@ import Colors from "../Colors";
 import products from "../data/Products";
 import Rating from "./Rating";
 
-function HomeProducts() {
+function HomeProducts({ data }) {
   const navigation = useNavigation();
   return (
     <ScrollView flex={1} showsVerticalScrollIndicator={false}>
@@ -27,7 +27,9 @@ function HomeProducts() {
       >
         {products.map((product) => (
           <Pressable
-            onPress={() => navigation.navigate("Single", product)}
+            onPress={() =>
+              navigation.navigate("Single", { product: product, data: data })
+            }
             key={product.id}
             w="47%"
             bg={Colors.white}

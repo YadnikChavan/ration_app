@@ -4,11 +4,13 @@ import Colors from "../Colors";
 import HomeSearch from "../components/HomeSearch";
 import HomeProducts from "../components/HomeProducts";
 
-function HomeScreen() {
+function HomeScreen({ route }) {
+  const data = route.params;
+
   return (
     <Box flex={1} bg={Colors.subGreen}>
       <HomeSearch />
-      <HomeProducts />
+      <HomeProducts data={data} />
     </Box>
   );
 }

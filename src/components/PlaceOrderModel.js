@@ -17,30 +17,30 @@ import Colors from "../Colors";
 import products from "../data/Products";
 import Buttone from "./Buttone";
 
-const OrderInfos = [
-  {
-    title: "Products",
-    price: 125.77,
-    color: Colors.black,
-  },
-  {
-    title: "Shipping",
-    price: 34.0,
-    color: Colors.black,
-  },
-  {
-    title: "Tax",
-    price: 23.34,
-    color: Colors.black,
-  },
-  {
-    title: "Total Amount",
-    price: 125.77,
-    color: Colors.main,
-  },
-];
+const PlaceOrderModel = ({ data }) => {
+  const OrderInfos = [
+    {
+      title: "Products",
+      price: 34,
+      color: Colors.black,
+    },
+    {
+      title: "Shipping",
+      price: 34.0,
+      color: Colors.black,
+    },
+    {
+      title: "Tax",
+      price: 23.34,
+      color: Colors.black,
+    },
+    {
+      title: "Total Amount",
+      price: 125.77,
+      color: Colors.main,
+    },
+  ];
 
-const PlaceOrderModel = () => {
   const navigation = useNavigation();
   const [showModel, setShowModel] = useState(false);
   return (

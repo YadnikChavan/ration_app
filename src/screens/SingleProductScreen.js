@@ -18,7 +18,8 @@ import { useNavigation } from "@react-navigation/native";
 function SingleProductScreen({ route }) {
   const [value, setValue] = useState(0);
   const navigation = useNavigation();
-  const product = route.params;
+  const product = route.params.product;
+  const data = route.params.data;
   return (
     <ScrollView px={5} showsVerticalScrollIndicator={false}>
       <Image
@@ -33,7 +34,7 @@ function SingleProductScreen({ route }) {
       <Heading bold fontSize={15} mb={2} lineHeight={22}>
         {product.brand}
       </Heading>
-      <Rating value={product.stock} />
+      <Rating value={product.rating} />
       <HStack space={2} alignItems="center" my={5}>
         {product.countInStock > 0 ? (
           <NumericInput
@@ -73,7 +74,7 @@ function SingleProductScreen({ route }) {
       >
         ADD TO CART
       </Buttone>
-      <Review />
+      <Review data={data} />
     </ScrollView>
   );
 }

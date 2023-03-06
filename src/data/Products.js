@@ -1,15 +1,5 @@
 const products = [
-  {
-    id: "1",
-    brand: "Almonds",
-    description:
-      "Premium badam from Dmart's brand, Premia. Almonds are loaded with nutrients and are known to have multiple health benefits.",
-    price: 669,
-    rating: 3.5,
-    images:
-      "https://res.cloudinary.com/dr6b27ms2/image/upload/v1678063072/almonds_lxscj3.png",
-    countInStocks: 9,
-  },
+  ,
   {
     id: "2",
     brand: "Channa Daal",
@@ -19,7 +9,7 @@ const products = [
     rating: 3.5,
     images:
       "https://res.cloudinary.com/dr6b27ms2/image/upload/v1678063073/channa_dal_dpslf1.png",
-    countInStocks: 9,
+    countInStock: 9,
   },
   {
     id: "3",
@@ -30,7 +20,7 @@ const products = [
     rating: 3.5,
     images:
       "https://res.cloudinary.com/dr6b27ms2/image/upload/v1678063072/elachi_hir6qq.png",
-    countInStocks: 9,
+    countInStock: 9,
   },
   {
     id: "4",
@@ -40,7 +30,7 @@ const products = [
     rating: 4.5,
     images:
       "https://res.cloudinary.com/dr6b27ms2/image/upload/v1678063436/fortune_oil_oli57f.png",
-    countInStocks: 3,
+    countInStock: 3,
   },
 ];
 

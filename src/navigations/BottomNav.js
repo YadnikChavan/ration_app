@@ -29,7 +29,9 @@ const CustomTab = ({ childern, onPress }) => (
   </Pressable>
 );
 
-const BottomNav = () => {
+const BottomNav = ({ route }) => {
+  const data = route.params;
+  console.log("BOTTOM :::::" + JSON.stringify(data));
   return (
     <Tab.Navigator
       backBehavior="main"
@@ -44,6 +46,7 @@ const BottomNav = () => {
       <Tab.Screen
         name="Main"
         component={StackNav}
+        initialParams={data}
         options={{
           tabBarIcon: ({ focused }) => (
             <Center>
@@ -59,6 +62,7 @@ const BottomNav = () => {
       <Tab.Screen
         name="Cart"
         component={CartScreen}
+        initialParams={data}
         options={{
           tabBarButton: (props) => <CustomTab {...props} />,
           tabBarIcon: ({ focused }) => (
@@ -83,6 +87,7 @@ const BottomNav = () => {
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
+        initialParams={data}
         options={{
           tabBarIcon: ({ focused }) => (
             <Center>
